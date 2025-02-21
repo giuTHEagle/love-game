@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Game for You</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
+        }
+        #heart {
+            font-size: 100px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #heart:hover {
+            transform: scale(1.1);
+        }
+        #message {
+            font-size: 36px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            color: #ff3366;
+        }
+        #clickCount {
+            font-size: 24px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="heart">❤️</div>
+    <div id="clickCount">Click the heart 5 times!</div>
+    <div id="message"></div>
+
+    <script>
+        let clicks = 0;
+        const heart = document.getElementById('heart');
+        const clickCount = document.getElementById('clickCount');
+        const message = document.getElementById('message');
+
+        heart.addEventListener('click', function() {
+            clicks++;
+            if (clicks < 5) {
+                clickCount.textContent = `Keep going! ${5 - clicks} more clicks!`;
+                heart.style.transform = 'scale(1.2)';
+                setTimeout(() => heart.style.transform = 'scale(1)', 200);
+            } else {
+                heart.style.display = 'none';
+                clickCount.style.display = 'none';
+                message.style.display = 'block';
+                message.textContent = 'I love you so much, ZINEB! ❤️';
+            }
+        });
+    </script>
+</body>
+</html>
